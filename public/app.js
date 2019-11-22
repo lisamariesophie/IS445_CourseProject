@@ -1,14 +1,18 @@
 
-const createBtns = document.getElementsByClassName('createBtn');
-const editBtns = document.getElementsByClassName('editBtn');
-const deleteBtns = document.getElementsByClassName('deleteBtn');
+const createBtn = document.getElementById('createBtn');
 const detailsModal = document.getElementById('detailsModal');
 const db = firebase.firestore();
 const contacts = db.collection('users');
-let counter = 1;
+const tbody = document.getElementById('tbody');
+let counter;
+
+createBtn.addEventListener('click', createContact);
+
 
 function getContacts() {
   contacts.onSnapshot(docs => {
+    tbody.innerHTML = "";
+    counter = 1;
     docs.forEach(doc => {
       renderContacts(doc)
     })
@@ -16,8 +20,8 @@ function getContacts() {
 };
 
 function renderContacts(doc) {
-  const tbody = document.getElementById('tbody');
   let row = document.createElement('tr');
+  row.setAttribute('data-id', doc.id);
   let tdNumber = document.createElement('td');
   let tdName = document.createElement('td');
   let tdEmail = document.createElement('td');
@@ -46,7 +50,7 @@ function renderContacts(doc) {
     let id = e.target.parentElement.getAttribute('data-id');
     confirmDelete(id);
   });
-  row.setAttribute('data-id', doc.id);
+  tdNumber.style.fontWeight = "bold";
   tdNumber.textContent = counter;
   tdName.textContent = doc.data().name;
   tdEmail.textContent = doc.data().email;
@@ -85,6 +89,7 @@ function createContact() {
     .then(function (docRef) {
       console.log('Document written with ID: ', docRef.id)
       setId(docRef.id);
+      showDetails(docRef.id);
       form.name.value = '';
       form.email.value = '';
       form.phone.value = '';
@@ -95,7 +100,6 @@ function createContact() {
 }
 
 function updateContact(id, contact) {
-  const form = document.getElementById('updateForm');
   db.collection("users")
     .doc(id)
     .update(
@@ -136,6 +140,7 @@ function confirmDelete(id) {
 
 async function showDetails(id) {
   $('#detailsContact').modal('show');
+  console.log('DETILS', id);
   let deleteBtn = document.getElementById('deleteBtn');
   let editBtn = document.getElementById('editBtn');
   const contact = await getContact(id);
@@ -146,7 +151,7 @@ async function showDetails(id) {
   dEmail.innerHTML = `Email: <span>${contact.email}</span>`;
   dPhone.innerHTML = `Phone: <span>${contact.phone}</span>`;
   deleteBtn.addEventListener('click', (e) => {
-    $('#detailsContact').hide();
+    $('#detailsContact').modal('toggle');
     e.stopPropagation();
     confirmDelete(id);
   });
@@ -166,7 +171,7 @@ async function editContact(id) {
   form.email.value = contact.email;
   form.phone.value = contact.phone;
   updateBtn.addEventListener('click', (e) => {
-  $('#editContact').hide();
+  $('#editContact').modal('toggle');
     e.stopPropagation();
     contact.name = form.name.value;
     contact.email = form.email.value;

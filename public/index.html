@@ -9,6 +9,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/1b6165ee93.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -21,9 +22,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <form class="form-inline">
-        <button class="btn btn-outline-light" type="button">Index</button>
+        <!-- <button class="btn btn-outline-light" type="button"><i class="fas fa-list"></i> Index</button> -->
         <button class="btn btn-outline-light" type="button" data-toggle="modal"
-          data-target="#createContact">New</button>
+          data-target="#createContact"><i class="fas fa-plus-square"></i> New</button>
       </form>
     </div>
   </nav>
@@ -75,8 +76,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button class="createBtn" type="button" class="btn btn-outline-primary" data-dismiss="modal"
-              data-toggle="modal" href="#detailsContact">Save</button>
+            <button id="createBtn" type="button" class="btn btn-outline-primary" data-dismiss="modal">Save</button>
           </div>
         </div>
       </div>
