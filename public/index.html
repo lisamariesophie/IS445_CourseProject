@@ -24,8 +24,8 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <form class="form-inline">
         <!-- <button class="btn btn-outline-light" type="button"><i class="fas fa-list"></i> Index</button> -->
-        <button class="btn btn-outline-light" type="button" data-toggle="modal"
-          data-target="#createContact"><i class="fas fa-plus-square"></i> New</button>
+        <button class="btn btn-outline-light" type="button" data-toggle="modal" data-target="#createContact"><i
+            class="fas fa-plus-square"></i> New</button>
       </form>
     </div>
   </nav>
@@ -40,9 +40,9 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th class="thbtn" scope="col"></th>
+            <th class="thbtn" scope="col"></th>
+            <th class="thbtn" scope="col"></th>
           </tr>
         </thead>
         <tbody id="tbody">
@@ -63,23 +63,24 @@
           <div class="modal-body">
             <form id="createForm">
               <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" name="name" class="form-control" id="createName" placeholder="John Doe" required>
+                <label for="name">Name:*</label>
+                <input type="text" name="name" class="form-control" id="createName" placeholder="Enter name" required>
               </div>
               <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" name="email" class="form-control" id="createEmail" placeholder="name@example.com"
-                  required>
+                <label for="email">Email:*</label>
+                <input type="email" name="email" class="form-control" id="createEmail" placeholder="Enter e-mail"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
               </div>
               <div class="form-group">
-                <label for="phone">Phone:</label>
-                <input type="text" name="phone" class="form-control" id="createPhone" placeholder="555-555-555"
-                  required>
+                <label for="phone">Phone:*</label>
+                <input type="tel" name="phone" class="form-control" id="createPhone" pattern="[2-9]{1}[0-9]{9}"
+                  placeholder="Enter 10 digit phone number" required>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button id="createBtn" type="button" class="btn btn-outline-primary" data-dismiss="modal">Save</button>
+            <button id="createBtn" type="submit" class="btn btn-outline-success" data-dismiss="modal"
+              disabled>Save</button>
           </div>
         </div>
       </div>
@@ -101,8 +102,10 @@
             <p id="dPhone"></p>
           </div>
           <div class="modal-footer">
-            <button type="button" id="editBtn" class="btn btn-outline-warning" data-dismiss="modal" aria-label="Close">Edit</button>
-            <button type="button" id="deleteBtn" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close">Delete</button>
+            <button type="button" id="editBtn" class="btn btn-outline-warning" data-dismiss="modal"
+              aria-label="Close">Edit</button>
+            <button type="button" id="deleteBtn" class="btn btn-outline-danger" data-dismiss="modal"
+              aria-label="Close">Delete</button>
           </div>
         </div>
       </div>
@@ -121,23 +124,23 @@
           <div class="modal-body">
             <form id="editForm">
               <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" name="name" class="form-control" id="createName" placeholder="John Doe" required>
+                <label for="name">Name:*</label>
+                <input type="text" name="name" class="form-control" id="editName" placeholder="Enter name" required>
               </div>
               <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" name="email" class="form-control" id="createEmail" placeholder="name@example.com"
-                  required>
+                <label for="email">Email:*</label>
+                <input type="email" name="email" class="form-control" id="editEmail" placeholder="Enter e-mail"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
               </div>
               <div class="form-group">
-                <label for="phone">Phone:</label>
-                <input type="text" name="phone" class="form-control" id="createPhone" placeholder="555-555-555"
-                  required>
+                <label for="phone">Phone:*</label>
+                <input type="tel" name="phone" class="form-control" id="editPhone" pattern="[2-9]{1}[0-9]{9}"
+                  placeholder="Enter 10 digit phone number" required>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button id="updateBtn" type="button" class="btn btn-outline-primary">Update</button>
+            <button id="updateBtn" type="button" class="btn btn-outline-success">Update</button>
           </div>
         </div>
       </div>
@@ -161,7 +164,9 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
   <script src="app.js"></script>
-  
+  <script src="formValidation.js"></script>
+
+
 </body>
 
 </html>

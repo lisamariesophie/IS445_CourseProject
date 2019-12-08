@@ -1,16 +1,17 @@
-
 const createBtn = document.getElementById('createBtn')
+const updateBtn = document.getElementById('updateBtn')
 const db = firebase.firestore()
 const contacts = db.collection('contacts')
 let counter
 
 createBtn.addEventListener('click', createContact)
 
+//get Contacts from Firebase and render Table
 function getContacts() {
-  let table = document.getElementById('tbody');
+  const table = document.getElementById('tbody')
   contacts.onSnapshot(docs => {
     table.innerHTML = ""
-    counter = 1;
+    counter = 1
     docs.forEach(doc => {
       table.innerHTML +=
         `<tr>
@@ -27,38 +28,40 @@ function getContacts() {
   })
 }
 
+//create new Contact in Firebase
 function createContact() {
-  const form = document.getElementById('createForm')
+  const createForm = document.getElementById('createForm')
   contacts
     .add({
-      name: form.name.value,
-      email: form.email.value,
-      phone: form.phone.value
+      name: createForm.name.value,
+      email: createForm.email.value,
+      phone: createForm.phone.value
     })
     .then(function (docRef) {
-      showDetails(docRef.id, form.name.value, form.email.value, form.phone.value)
-      form.name.value = ''
-      form.email.value = ''
-      form.phone.value = ''
+      showDetails(docRef.id, createForm.name.value, createForm.email.value, createForm.phone.value)
+      createForm.name.value = ''
+      createForm.email.value = ''
+      createForm.phone.value = ''
     })
     .catch(function (error) {
       console.error('Error adding document: ', error)
     })
 }
 
+//edit Contact
 function editContact(id, name, email, phone) {
-  const updateBtn = document.getElementById('updateBtn')
-  const form = document.getElementById('editForm')
+  const editForm = document.getElementById('editForm')
   $('#editContact').modal('show')
-  form.name.value = name
-  form.email.value = email
-  form.phone.value = phone
+  editForm.name.value = name
+  editForm.email.value = email
+  editForm.phone.value = phone
   updateBtn.onclick = function () {
     $('#editContact').modal('toggle')
-    updateContact(id, form.name.value, form.email.value, form.phone.value)
+    updateContact(id, editForm.name.value, editForm.email.value, editForm.phone.value)
   }
 }
 
+//update Contact in Firebase
 function updateContact(id, name, email, phone) {
   return contacts.doc(id)
     .update(
@@ -74,6 +77,7 @@ function updateContact(id, name, email, phone) {
     })
 }
 
+//delete Contact from Firebase
 function deleteContact(id) {
   let confirmation = confirm("Are you sure?")
   if (confirmation === true) {
@@ -89,6 +93,7 @@ function deleteContact(id) {
   }
 }
 
+//show Details and Options in Modal
 function showDetails(id, name, email, phone) {
   const editBtn = document.getElementById("editBtn")
   $('#detailsContact').modal('show')
