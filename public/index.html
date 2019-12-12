@@ -61,24 +61,25 @@
             </button>
           </div>
           <div class="modal-body">
-            <form id="createForm">
+            <form id="createForm" class="needs-validation" novalidate>
               <div class="form-group">
                 <label for="name">Name:*</label>
-                <input type="text" name="name" class="form-control" id="createName" placeholder="Enter name" required>
+                <input type="text" name="name" class="form-control" id="createName" placeholder="Jane Doe" required>
               </div>
               <div class="form-group">
                 <label for="email">Email:*</label>
-                <input type="email" name="email" class="form-control" id="createEmail" placeholder="Enter e-mail"
+                <input type="email" name="email" class="form-control" id="createEmail" placeholder="janedoe@example.com"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
               </div>
               <div class="form-group">
                 <label for="phone">Phone:*</label>
                 <input type="tel" name="phone" class="form-control" id="createPhone" pattern="[2-9]{1}[0-9]{9}"
-                  placeholder="Enter 10 digit phone number" required>
+                  placeholder="Enter 10 digit phone number not starting with 0 or 1" required>
               </div>
             </form>
           </div>
           <div class="modal-footer">
+            
             <button id="createBtn" type="submit" class="btn btn-outline-success" data-dismiss="modal"
               disabled>Save</button>
           </div>
