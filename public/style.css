@@ -1,3 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+}
+
 section {
   margin: 30px 0;
 }
@@ -6,17 +16,25 @@ section {
   margin: 0 auto;
 }
 
+.navbar-brand {
+  font-size: 24px;
+}
+
 h1 {
+  font-size: 42px;
   margin-bottom: 50px;
 }
 
 .btn {
   min-width: 75px !important;
-  margin: 5px;
+}
+
+table td, th {
+  vertical-align: middle !important;
 }
 
 .thbtn {
-  width: 50px !important; 
+  width: 40px !important;
 }
 
 .modal-body span {
@@ -27,28 +45,28 @@ h1 {
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {  
+@media (min-width: 576px) {
   #container {
     width: 100%;
   }
 }
- 
+
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
-@media (min-width: 768px) {  
+@media (min-width: 768px) {
   #container {
     width: 95%;
   }
 }
- 
+
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
   #container {
     width: 85%;
   }
 }
- 
+
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  
+@media (min-width: 1200px) {
   #container {
     width: 70%;
   }

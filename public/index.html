@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="#" />
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/1b6165ee93.js" crossorigin="anonymous"></script>
   <script src="app.js" defer></script>
   <script src="formValidation.js" defer></script>
@@ -17,8 +18,8 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Contact Management</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Contact Management</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -34,8 +35,9 @@
     <section>
       <h1>Contact List</h1>
       <!-- Bootstrap Table -->
-      <table class="table my-3">
-        <thead>
+      <div class="table-responsive"></div>
+      <table class="table">
+        <thead class="thead">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
@@ -49,103 +51,102 @@
         <tbody id="tbody">
         </tbody>
       </table>
-    </section>
-    <!-- Create Contact Modal -->
-    <div class="modal fade" id="createContact" tabindex="-1" role="dialog" aria-labelledby="createContact"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="createContact">New Contact</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form id="createForm" class="needs-validation" novalidate>
-              <div class="form-group">
-                <label for="name">Name:*</label>
-                <input type="text" name="name" class="form-control" id="createName" placeholder="Jane Doe" required>
-              </div>
-              <div class="form-group">
-                <label for="email">Email:*</label>
-                <input type="email" name="email" class="form-control" id="createEmail" placeholder="janedoe@example.com"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone:*</label>
-                <input type="tel" name="phone" class="form-control" id="createPhone" pattern="[2-9]{1}[0-9]{9}"
-                  placeholder="Enter 10 digit phone number not starting with 0 or 1" required>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button id="createBtn" type="submit" class="btn btn-success" data-dismiss="modal"
-              disabled>Submit</button>
-          </div>
+  </div>
+  </section>
+  <!-- Create Contact Modal -->
+  <div class="modal fade" id="createContact" tabindex="-1" role="dialog" aria-labelledby="createContact"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createContact">New Contact</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="createForm" class="needs-validation" novalidate>
+            <div class="form-group">
+              <label for="name">Name:*</label>
+              <input type="text" name="name" class="form-control" id="createName" placeholder="Jane Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:*</label>
+              <input type="email" name="email" class="form-control" id="createEmail" placeholder="janedoe@example.com"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone:*</label>
+              <input type="tel" name="phone" class="form-control" id="createPhone" pattern="[2-9]{1}[0-9]{9}"
+                placeholder="Enter 10 digit phone number not starting with 0 or 1" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="createBtn" type="submit" class="btn btn-success" data-dismiss="modal" disabled>Submit</button>
         </div>
       </div>
     </div>
-    <!-- Details Contact Modal -->
-    <div class="modal fade" id="detailsContact" tabindex="-1" role="dialog" aria-labelledby="detailsContact"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="detailsContact">Contact</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p id="dName"></p>
-            <p id="dEmail"></p>
-            <p id="dPhone"></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="editBtn" class="btn btn-outline-warning" data-dismiss="modal"
-              aria-label="Close">Edit</button>
-            <button type="button" id="deleteBtn" class="btn btn-outline-danger" data-dismiss="modal"
-              aria-label="Close">Delete</button>
-          </div>
+  </div>
+  <!-- Details Contact Modal -->
+  <div class="modal fade" id="detailsContact" tabindex="-1" role="dialog" aria-labelledby="detailsContact"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailsContact">Contact</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="dName"></p>
+          <p id="dEmail"></p>
+          <p id="dPhone"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="editBtn" class="btn btn-outline-warning" data-dismiss="modal"
+            aria-label="Close">Edit</button>
+          <button type="button" id="deleteBtn" class="btn btn-outline-danger" data-dismiss="modal"
+            aria-label="Close">Delete</button>
         </div>
       </div>
     </div>
-    <!-- Edit Contact Modal -->
-    <div class="modal fade" id="editContact" tabindex="-1" role="dialog" aria-labelledby="editContact"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Edit Contact</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form id="editForm">
-              <div class="form-group">
-                <label for="name">Name:*</label>
-                <input type="text" name="name" class="form-control" id="editName" placeholder="Enter name" required>
-              </div>
-              <div class="form-group">
-                <label for="email">Email:*</label>
-                <input type="email" name="email" class="form-control" id="editEmail" placeholder="Enter e-mail"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone:*</label>
-                <input type="tel" name="phone" class="form-control" id="editPhone" pattern="[2-9]{1}[0-9]{9}"
-                  placeholder="Enter 10 digit phone number" required>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button id="updateBtn" type="button" class="btn btn-success">Update</button>
-          </div>
+  </div>
+  <!-- Edit Contact Modal -->
+  <div class="modal fade" id="editContact" tabindex="-1" role="dialog" aria-labelledby="editContact" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Contact</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editForm">
+            <div class="form-group">
+              <label for="name">Name:*</label>
+              <input type="text" name="name" class="form-control" id="editName" placeholder="Enter name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:*</label>
+              <input type="email" name="email" class="form-control" id="editEmail" placeholder="Enter e-mail"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone:*</label>
+              <input type="tel" name="phone" class="form-control" id="editPhone" pattern="[2-9]{1}[0-9]{9}"
+                placeholder="Enter 10 digit phone number" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="updateBtn" type="button" class="btn btn-success">Update</button>
         </div>
       </div>
     </div>
+  </div>
   </div>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="/__/firebase/7.3.0/firebase-app.js"></script>
@@ -165,4 +166,5 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 </body>
+
 </html>
