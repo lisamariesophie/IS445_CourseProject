@@ -39,9 +39,9 @@ table td, th {
 
 .modal-body span {
   color: #fff;
-  background-color: #007bff;
+  background-color: #666;
   border-radius: 5px;
-  padding: 2px;
+  padding: 3px;
 }
 
 /* Small devices (landscape phones, 576px and up) */
